@@ -1,72 +1,183 @@
-**特别强调：** 此项目不允许任何商业行为，如果使用该项目进行二次开发，不允许收取任何费用，弘扬开源精神，从你我做起！
+# Thrive-Admin
 
-# 最新版已发布
-前端：[LiuYuYang01/ThriveX-Blog (github.com)](https://github.com/LiuYuYang01/ThriveX-Blog)
+> Vue.js 管理后台界面
 
-控制端：[LiuYuYang01/ThriveX-Admin (github.com)](https://github.com/LiuYuYang01/ThriveX-Admin)
+## 项目简介
 
-后端：[LiuYuYang01/ThriveX-Server (github.com)](https://github.com/LiuYuYang01/ThriveX-Server)
+Thrive-Admin 是 Thrive 博客管理系统的管理后台，基于 Vue 3 + TypeScript 开发，提供直观的管理界面，支持文章管理、用户管理、评论审核、系统配置等功能。
 
+## 技术栈
 
-# 🎉 Thrive 现代化博客管理系统
+- **框架**: Vue 3
+- **语言**: TypeScript
+- **状态管理**: Pinia
+- **UI 组件**: Element Plus
+- **样式**: SCSS
+- **构建工具**: Vite
+- **图表**: ECharts
 
-🔥 **首先最重要的事情放第一**
+## 环境要求
 
-1. 开源不易，麻烦占用 `10` 秒钟的时间帮忙点个免费的 `Star`，再此万分感谢！
-2. 如果大家觉得这个项目还不错，碰巧你们公司缺人。不介意的话可以内推我😁，正好我也准备找工作了，我的邮箱：liuyuyang1024@yeah.net
+- Node.js 16+
+- npm 7+
 
+## 快速开始
 
+### 1. 克隆项目
 
-**下面开始进入主题↓↓↓**
+```bash
+git clone https://github.com/LiuYuYang01/Thrive-Admin.git
+cd Thrive-Admin
+```
 
+### 2. 安装依赖
 
+```bash
+npm install
+```
 
-🌈 **项目介绍：** Thrive 是一个简而不简单的现代化博客管理系统，专注于分享技术文章和知识，为技术爱好者和从业者提供一个分享、交流和学习的平台。用户可以在平台上发表自己的技术文章，或浏览其他用户分享的文章，并与他们进行讨论和互动。
+### 3. 配置后端地址
 
+编辑 `src/utils/Request.ts` 中的 baseURL：
 
+```typescript
+private static readonly baseURL: string = "http://127.0.0.1:5000/";
+```
 
-🗂️ **项目预览：** [http://liuyuyang.net/](http://liuyuyang.net/)
+### 4. 启动开发服务器
 
+```bash
+npm run dev
+```
 
+应用将在 `http://127.0.0.1:6173` 启动。
 
-🛠️ **技术架构：**
+## 构建生产版本
 
-前端： Vue3、TypeScript、Pinia、Element-plus、Scss、Echarts、Vite
+```bash
+npm run build
+```
 
-后端：Python Flask、SQLAlchemy、MySQL
+## 项目结构
 
-后期会采用 `Spring Boot` 重构项目后端
+```
+Thrive-Admin/
+├── src/
+│   ├── api/              # API 接口
+│   ├── components/       # 公共组件
+│   ├── router/           # 路由配置
+│   ├── stores/           # Pinia 状态管理
+│   ├── styles/           # 样式文件
+│   ├── types/            # TypeScript 类型定义
+│   ├── utils/            # 工具函数
+│   ├── views/            # 页面组件
+│   ├── App.vue           # 根组件
+│   └── main.ts           # 入口文件
+├── public/               # 静态资源
+├── index.html            # HTML 模板
+├── vite.config.ts        # Vite 配置
+├── tsconfig.json         # TypeScript 配置
+└── package.json          # 项目配置
+```
 
+## 主要功能
 
+- ✅ 用户登录认证
+- ✅ 文章管理 (发布、编辑、删除)
+- ✅ 分类管理
+- ✅ 评论审核
+- ✅ 用户管理
+- ✅ 系统配置
+- ✅ 数据统计图表
 
-🪧 **优缺点：**
+## 开发说明
 
-优点：相比其他博客系统来说，这款系统采用前后端分离开发模式，如果你觉得默认的前端不好看，你完全可以不懂后端，只要你会调接口拿数据，你就可以通过现有的后端 `API` 自己写一个前端
+### 代码规范
 
-缺点：前后端分离开发模式必然都存在一个痛点，那就是 `SEO` 问题，针对这个问题在未来我会采用 `Nuxt3` 服务端渲染这门框架对前端进行重构。
+- 使用 TypeScript 进行类型检查
+- 遵循 Vue 3 Composition API
+- 使用 ESLint 进行代码检查
 
+### 添加新页面
 
+1. 在 `src/views/` 下创建页面组件
+2. 在 `src/router/index.ts` 中添加路由配置
+3. 如需要，在 `src/api/` 中添加 API 接口
 
-❤️ **项目初衷：**
+### 环境变量
 
-一直对网站开发领域很感兴趣，从小就希望有一个属于自己的网站，因此踏上了 `Web` 全栈开发的旅途，立志有朝一日也能开发一款属于自己的网站。如今历时1年有余，一个人从0到1独立完成前端、控制端、后端、数据库。也算是完成了从小的一个心愿吧
+创建 `.env` 文件：
 
+```env
+VITE_API_BASE_URL=http://127.0.0.1:5000/
+VITE_APP_TITLE=Thrive Admin
+```
 
+## 部署
 
-🔥 **项目演示：**
-![image-20240408093347003](https://bu.dusays.com/2024/04/09/66148fc49640a.png)
-![image-20240408093347003](https://bu.dusays.com/2024/09/17/66e96ca781d49.png)
+### 使用 Nginx
 
+```nginx
+server {
+    listen 80;
+    server_name admin.yourdomain.com;
+    root /path/to/dist;
+    index index.html;
 
-🏹 **未来计划：**
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
 
-![image-20240408103633402](https://bu.dusays.com/2024/04/09/66148ecb66a39.png)
+    location /api {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
 
+### 使用 Docker
 
+```dockerfile
+FROM node:16-alpine as build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
 
-🌈 **项目运行：**
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+```
 
-前端 or 控制端
+## 浏览器支持
+
+- Chrome 70+
+- Firefox 70+
+- Safari 12+
+- Edge 79+
+
+## 贡献指南
+
+1. Fork 项目
+2. 创建功能分支: `git checkout -b feature/AmazingFeature`
+3. 提交更改: `git commit -m 'Add some AmazingFeature'`
+4. 推送分支: `git push origin feature/AmazingFeature`
+5. 发起 Pull Request
+
+## 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+
+## 联系方式
+
+- 项目主页: https://github.com/LiuYuYang01/Thrive-Admin
+- 邮箱: liuyuyang1024@yeah.net
+
+---
+
+**开源不易，如果这个项目对你有帮助，请给个 Star ⭐ 支持一下！**
 
 环境：Nodejs16、18
 
